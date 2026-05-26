@@ -7,370 +7,156 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
-    --yellow: #FFD700;
-    --red: #FF3333;
-    --blue: #4488FF;
-    --green: #44FF88;
-    --purple: #9944FF;
-    --dark: #0a0a1a;
-    --darker: #060610;
-    --card: #0d0d22;
-    --border: #333366;
-    --text: #e8e8ff;
-    --muted: #8888aa;
-    --pixel: 'Press Start 2P', monospace;
-    --vt: 'VT323', monospace;
+    --yellow: #FFD700; --red: #FF3333; --blue: #4488FF; --green: #44FF88;
+    --purple: #9944FF; --dark: #0a0a1a; --darker: #060610; --card: #0d0d22;
+    --border: #333366; --text: #e8e8ff; --muted: #8888aa;
+    --pixel: 'Press Start 2P', monospace; --vt: 'VT323', monospace;
   }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--darker);
-    color: var(--text);
-    font-family: var(--pixel);
-    overflow-x: hidden;
-  }
-
-  /* SCANLINES */
+  body { background: var(--darker); color: var(--text); font-family: var(--pixel); overflow-x: hidden; }
   body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
+    content: ''; position: fixed; inset: 0;
     background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px);
-    pointer-events: none;
-    z-index: 9999;
+    pointer-events: none; z-index: 9999;
   }
-
-  /* ── HEADER ── */
-  .header {
-    background: var(--dark);
-    border-bottom: 4px solid var(--yellow);
-    padding: 40px 20px 32px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .header-stars {
-    position: absolute; inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 8% 15%, rgba(255,255,255,0.7), transparent),
-      radial-gradient(1px 1px at 22% 70%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(1px 1px at 38% 30%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1px 1px at 55% 85%, rgba(255,255,255,0.4), transparent),
-      radial-gradient(1px 1px at 68% 12%, rgba(255,255,255,0.7), transparent),
-      radial-gradient(1px 1px at 80% 55%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(1px 1px at 92% 40%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1px 1px at 15% 92%, rgba(255,255,255,0.4), transparent),
-      radial-gradient(1px 1px at 75% 90%, rgba(255,255,255,0.5), transparent);
-  }
+  .header { background: var(--dark); border-bottom: 4px solid var(--yellow); padding: 40px 20px 32px; text-align: center; position: relative; overflow: hidden; }
+  .header-stars { position: absolute; inset: 0; background-image: radial-gradient(1px 1px at 8% 15%, rgba(255,255,255,0.7), transparent), radial-gradient(1px 1px at 22% 70%, rgba(255,255,255,0.5), transparent), radial-gradient(1px 1px at 38% 30%, rgba(255,255,255,0.6), transparent), radial-gradient(1px 1px at 55% 85%, rgba(255,255,255,0.4), transparent), radial-gradient(1px 1px at 68% 12%, rgba(255,255,255,0.7), transparent), radial-gradient(1px 1px at 80% 55%, rgba(255,255,255,0.5), transparent), radial-gradient(1px 1px at 92% 40%, rgba(255,255,255,0.6), transparent); }
   .header-inner { position: relative; z-index: 1; }
-
-  .logo {
-    font-size: clamp(20px, 5vw, 42px);
-    color: var(--yellow);
-    text-shadow: 4px 4px 0 #aa8800, 8px 8px 0 #664400;
-    line-height: 1.4;
-    letter-spacing: 2px;
-    animation: flicker 6s infinite;
-  }
+  .logo { font-size: clamp(20px, 5vw, 42px); color: var(--yellow); text-shadow: 4px 4px 0 #aa8800, 8px 8px 0 #664400; line-height: 1.4; letter-spacing: 2px; animation: flicker 6s infinite; }
   .logo .red { color: var(--red); text-shadow: 4px 4px 0 #880000, 8px 8px 0 #440000; }
-
-  @keyframes flicker {
-    0%,96%,100% { opacity:1; }
-    97% { opacity:0.7; }
-    98% { opacity:1; }
-    99% { opacity:0.8; }
-  }
-
-  .subtitle {
-    font-family: var(--vt);
-    font-size: clamp(15px, 3vw, 22px);
-    color: var(--green);
-    margin-top: 10px;
-    letter-spacing: 3px;
-  }
-
-  .header-badges {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
-    margin-top: 16px;
-  }
-  .badge {
-    font-size: 7px;
-    padding: 5px 10px;
-    border: 2px solid;
-    letter-spacing: 1px;
-  }
+  @keyframes flicker { 0%,96%,100%{opacity:1} 97%{opacity:0.7} 98%{opacity:1} 99%{opacity:0.8} }
+  .subtitle { font-family: var(--vt); font-size: clamp(15px, 3vw, 22px); color: var(--green); margin-top: 10px; letter-spacing: 3px; }
+  .header-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 16px; }
+  .badge { font-size: 7px; padding: 5px 10px; border: 2px solid; letter-spacing: 1px; }
   .badge-y { border-color: var(--yellow); color: var(--yellow); }
-  .badge-r { border-color: var(--red);    color: var(--red); }
-  .badge-b { border-color: var(--blue);   color: var(--blue); }
-  .badge-g { border-color: var(--green);  color: var(--green); }
+  .badge-r { border-color: var(--red); color: var(--red); }
+  .badge-b { border-color: var(--blue); color: var(--blue); }
+  .badge-g { border-color: var(--green); color: var(--green); }
   .badge-p { border-color: var(--purple); color: var(--purple); }
-
   .blink { animation: blink 1s step-end infinite; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-  /* ── NAV ── */
-  nav {
-    background: #111128;
-    border-bottom: 2px solid var(--border);
-    display: flex; justify-content: center; flex-wrap: wrap;
-    position: sticky; top: 0; z-index: 100;
-  }
-  nav a {
-    font-family: var(--pixel);
-    font-size: 8px;
-    color: var(--text);
-    text-decoration: none;
-    padding: 14px 14px;
-    border-bottom: 3px solid transparent;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: color .1s, border-color .1s;
-  }
-  nav a:hover, nav a.active {
-    color: var(--yellow);
-    border-bottom-color: var(--yellow);
-  }
-
-  /* ── SECTIONS ── */
+  nav { background: #111128; border-bottom: 2px solid var(--border); display: flex; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+  nav a { font-family: var(--pixel); font-size: 8px; color: var(--text); text-decoration: none; padding: 14px 14px; border-bottom: 3px solid transparent; cursor: pointer; white-space: nowrap; transition: color .1s, border-color .1s; }
+  nav a:hover, nav a.active { color: var(--yellow); border-bottom-color: var(--yellow); }
   .section { display: none; }
   .section.active { display: block; }
-
   .container { max-width: 940px; margin: 0 auto; padding: 48px 20px; }
-
-  .section-title {
-    font-size: clamp(9px, 1.8vw, 13px);
-    color: var(--yellow);
-    margin-bottom: 32px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-title::after {
-    content: '';
-    flex: 1; height: 2px;
-    background: repeating-linear-gradient(90deg, var(--border) 0, var(--border) 6px, transparent 6px, transparent 10px);
-  }
-
-  /* PIXEL CARD */
-  .card {
-    background: var(--card);
-    border: 2px solid var(--border);
-    padding: 24px;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  .card::before {
-    content: ''; position: absolute;
-    top: -2px; left: 10px;
-    width: 20px; height: 4px;
-    background: var(--yellow);
-  }
-  .card.blue::before  { background: var(--blue); }
+  .section-title { font-size: clamp(9px, 1.8vw, 13px); color: var(--yellow); margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
+  .section-title::after { content: ''; flex: 1; height: 2px; background: repeating-linear-gradient(90deg, var(--border) 0, var(--border) 6px, transparent 6px, transparent 10px); }
+  .card { background: var(--card); border: 2px solid var(--border); padding: 24px; margin-bottom: 20px; position: relative; }
+  .card::before { content: ''; position: absolute; top: -2px; left: 10px; width: 20px; height: 4px; background: var(--yellow); }
+  .card.blue::before { background: var(--blue); }
   .card.green::before { background: var(--green); }
-  .card.red::before   { background: var(--red); }
-  .card.purple::before{ background: var(--purple); }
-
-  .card-title {
-    font-size: 9px;
-    margin-bottom: 14px;
-  }
-  .card-title.blue   { color: var(--blue); }
-  .card-title.green  { color: var(--green); }
-  .card-title.red    { color: var(--red); }
+  .card.red::before { background: var(--red); }
+  .card.purple::before { background: var(--purple); }
+  .card-title { font-size: 9px; margin-bottom: 14px; }
+  .card-title.blue { color: var(--blue); }
+  .card-title.green { color: var(--green); }
+  .card-title.red { color: var(--red); }
   .card-title.purple { color: var(--purple); }
-
-  .vt {
-    font-family: var(--vt);
-    font-size: 18px;
-    line-height: 1.7;
-    color: #ccccee;
-  }
+  .vt { font-family: var(--vt); font-size: 18px; line-height: 1.7; color: #ccccee; }
   .vt.muted { color: var(--muted); }
-
-  /* GRID LAYOUTS */
   .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
   .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
-
-  /* TEAM CARD */
-  .team-card {
-    background: var(--card);
-    border: 2px solid var(--border);
-    padding: 20px 16px;
-    text-align: center;
-    transition: border-color .2s, transform .15s;
-    cursor: default;
-  }
+  .team-card { background: var(--card); border: 2px solid var(--border); padding: 20px 16px; text-align: center; transition: border-color .2s, transform .15s; cursor: default; }
   .team-card:hover { border-color: var(--yellow); transform: translateY(-4px); }
-
-  .avatar-wrap {
-    width: 72px; height: 72px;
-    margin: 0 auto 14px;
-    border: 2px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--pixel);
-    font-size: 20px;
-    background: #111128;
-  }
-  .av-blue   { color: var(--blue); }
-  .av-red    { color: var(--red); }
-  .av-green  { color: var(--green); }
-  .av-purple { color: var(--purple); }
-
+  .avatar-wrap { width: 72px; height: 72px; margin: 0 auto 14px; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--pixel); font-size: 20px; background: #111128; }
+  .av-blue { color: var(--blue); } .av-red { color: var(--red); } .av-green { color: var(--green); } .av-purple { color: var(--purple); }
   .t-name { font-size: 7px; color: var(--text); margin-bottom: 8px; line-height: 1.9; }
   .t-role { font-family: var(--vt); font-size: 16px; color: var(--green); margin-bottom: 4px; }
   .t-school { font-family: var(--vt); font-size: 13px; color: #555577; }
-
-  /* RESOURCE TABLE */
   .res-table { width: 100%; border-collapse: collapse; }
-  .res-table th {
-    font-size: 8px; color: var(--yellow);
-    text-align: left; padding: 10px 12px;
-    border-bottom: 2px solid var(--border);
-    background: #111128;
-  }
-  .res-table td {
-    font-family: var(--vt); font-size: 16px;
-    padding: 10px 12px;
-    border-bottom: 1px solid #1a1a33;
-    vertical-align: middle;
-  }
+  .res-table th { font-size: 8px; color: var(--yellow); text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); background: #111128; }
+  .res-table td { font-family: var(--vt); font-size: 16px; padding: 10px 12px; border-bottom: 1px solid #1a1a33; vertical-align: middle; }
   .res-table tr:hover td { background: #111128; }
-  .res-table a {
-    color: var(--blue);
-    text-decoration: none;
-  }
+  .res-table a { color: var(--blue); text-decoration: none; }
   .res-table a:hover { color: var(--green); text-decoration: underline; }
-  .tag {
-    display: inline-block;
-    font-size: 7px;
-    font-family: var(--pixel);
-    padding: 3px 7px;
-    border: 1px solid;
-    margin-left: 6px;
-    vertical-align: middle;
-  }
-  .tag-py  { border-color: var(--blue);   color: var(--blue); }
-  .tag-img { border-color: var(--green);  color: var(--green); }
+  .tag { display: inline-block; font-size: 7px; font-family: var(--pixel); padding: 3px 7px; border: 1px solid; margin-left: 6px; vertical-align: middle; }
+  .tag-py { border-color: var(--blue); color: var(--blue); }
+  .tag-img { border-color: var(--green); color: var(--green); }
   .tag-snd { border-color: var(--purple); color: var(--purple); }
   .tag-lib { border-color: var(--yellow); color: var(--yellow); }
-
-  /* DOWNLOAD SECTION */
   .dl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 8px; }
-
-  .dl-card {
-    background: var(--card);
-    border: 2px solid var(--border);
-    padding: 24px;
-    text-align: center;
-    transition: border-color .2s;
-  }
+  .dl-card { background: var(--card); border: 2px solid var(--border); padding: 24px; text-align: center; transition: border-color .2s; }
   .dl-card:hover { border-color: var(--yellow); }
-
   .dl-icon { font-size: 36px; display: block; margin-bottom: 12px; }
   .dl-label { font-size: 8px; color: var(--text); margin-bottom: 10px; line-height: 1.9; }
   .dl-desc { font-family: var(--vt); font-size: 15px; color: var(--muted); margin-bottom: 18px; }
-
-  .btn {
-    display: inline-block;
-    font-family: var(--pixel);
-    font-size: 8px;
-    padding: 12px 16px;
-    cursor: pointer;
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: transform .1s, box-shadow .1s;
-  }
-  .btn-yellow {
-    background: var(--yellow); color: var(--darker);
-    box-shadow: 4px 4px 0 #aa8800;
-  }
+  .btn { display: inline-block; font-family: var(--pixel); font-size: 8px; padding: 12px 16px; cursor: pointer; text-decoration: none; letter-spacing: 1px; transition: transform .1s, box-shadow .1s; }
+  .btn-yellow { background: var(--yellow); color: var(--darker); box-shadow: 4px 4px 0 #aa8800; }
   .btn-yellow:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 #aa8800; }
-  .btn-yellow:active { transform: translate(4px,4px); box-shadow: none; }
-
-  .btn-outline {
-    background: transparent; color: var(--text);
-    border: 2px solid var(--border);
-    box-shadow: 4px 4px 0 #222244;
-  }
+  .btn-outline { background: transparent; color: var(--text); border: 2px solid var(--border); box-shadow: 4px 4px 0 #222244; }
   .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); transform: translate(2px,2px); box-shadow: 2px 2px 0 #222244; }
-
-  /* HP BAR */
   .hp-wrap { margin: 12px 0; }
   .hp-label { font-size: 7px; color: var(--muted); margin-bottom: 5px; }
-  .hp-track {
-    height: 14px; background: #1a1a33;
-    border: 2px solid var(--border);
-    overflow: hidden;
-  }
+  .hp-track { height: 14px; background: #1a1a33; border: 2px solid var(--border); overflow: hidden; }
   .hp-fill { height: 100%; transition: width 1.5s ease; }
-  .hp-g { background: var(--green); }
-  .hp-y { background: var(--yellow); }
-  .hp-r { background: var(--red); }
-  .hp-b { background: var(--blue); }
-
-  /* FEATURES */
+  .hp-g { background: var(--green); } .hp-y { background: var(--yellow); } .hp-r { background: var(--red); }
   .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
-  .feat {
-    background: #0a0a18;
-    border: 2px solid var(--border);
-    padding: 18px 14px;
-    text-align: center;
-  }
+  .feat { background: #0a0a18; border: 2px solid var(--border); padding: 18px 14px; text-align: center; }
   .feat-icon { font-size: 28px; display: block; margin-bottom: 10px; }
   .feat-ttl { font-size: 7px; color: var(--yellow); margin-bottom: 8px; line-height: 1.9; }
   .feat-desc { font-family: var(--vt); font-size: 15px; color: var(--muted); line-height: 1.5; }
-
-  /* FOOTER */
-  footer {
-    background: #060610;
-    border-top: 4px solid var(--border);
-    padding: 32px 20px;
-    text-align: center;
-  }
+  footer { background: #060610; border-top: 4px solid var(--border); padding: 32px 20px; text-align: center; }
   .footer-logo { font-size: 10px; color: var(--yellow); margin-bottom: 8px; }
-  .footer-sub  { font-family: var(--vt); font-size: 16px; color: #444466; }
+  .footer-sub { font-family: var(--vt); font-size: 16px; color: #444466; }
   .footer-team { font-family: var(--vt); font-size: 14px; color: #333355; margin-top: 6px; }
-
-  /* HOME HERO */
-  .hero-desc {
-    font-family: var(--vt);
-    font-size: 20px;
-    line-height: 1.8;
-    color: #ccccee;
-    margin-bottom: 20px;
-  }
+  .hero-desc { font-family: var(--vt); font-size: 20px; line-height: 1.8; color: #ccccee; margin-bottom: 20px; }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-
-  /* ABOUT columns */
   .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-
   ul.pixel-list { list-style: none; padding: 0; }
-  ul.pixel-list li {
-    font-family: var(--vt);
-    font-size: 17px;
-    color: #aaccaa;
-    line-height: 2;
-  }
+  ul.pixel-list li { font-family: var(--vt); font-size: 17px; color: #aaccaa; line-height: 2; }
   ul.pixel-list li::before { content: '▶  '; color: var(--green); }
-
-  /* Barre de progression projet */
   .prog-item { margin-bottom: 16px; }
   .prog-label { font-size: 7px; color: var(--muted); margin-bottom: 5px; display: flex; justify-content: space-between; }
   .prog-track { height: 12px; background: #1a1a33; border: 2px solid var(--border); overflow: hidden; }
   .prog-fill { height: 100%; background: var(--green); }
-  .prog-fill.y { background: var(--yellow); }
-  .prog-fill.r { background: var(--red); }
 
-  @media (max-width: 480px) {
-    nav a { font-size: 6px; padding: 12px 8px; }
-    .logo { font-size: 16px; }
-  }
+  /* ── COMMANDES ── */
+  .cmd-players-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 20px; }
+  .cmd-player-card { background: var(--card); border: 2px solid var(--border); padding: 0; overflow: hidden; position: relative; }
+  .cmd-player-card.p1 { border-color: var(--blue); }
+  .cmd-player-card.p2 { border-color: var(--red); }
+  .cmd-player-header { padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
+  .p1 .cmd-player-header { background: rgba(68,136,255,0.15); border-bottom: 2px solid var(--blue); }
+  .p2 .cmd-player-header { background: rgba(255,51,51,0.15); border-bottom: 2px solid var(--red); }
+  .cmd-player-icon { font-size: 22px; }
+  .cmd-player-title { font-size: 8px; line-height: 1.8; }
+  .p1 .cmd-player-title { color: var(--blue); }
+  .p2 .cmd-player-title { color: var(--red); }
+  .cmd-player-sub { font-family: var(--vt); font-size: 14px; color: var(--muted); }
+  .cmd-list { padding: 14px 18px; }
+  .cmd-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #1a1a33; gap: 10px; }
+  .cmd-row:last-child { border-bottom: none; }
+  .cmd-action { font-family: var(--vt); font-size: 16px; color: #ccccee; flex: 1; }
+  .cmd-keys { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+  .key { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 28px; padding: 0 7px; background: #111128; border: 2px solid #444466; border-bottom: 4px solid #222244; font-family: var(--pixel); font-size: 7px; color: var(--text); white-space: nowrap; box-shadow: 0 2px 0 #0a0a1a; transition: transform .08s, border-bottom-width .08s; cursor: default; }
+  .key:hover { transform: translateY(2px); border-bottom-width: 2px; }
+  .key.blue { border-color: var(--blue); color: var(--blue); background: #00051a; }
+  .key.red  { border-color: var(--red);  color: var(--red);  background: #1a0000; }
+  .key.yellow { border-color: var(--yellow); color: var(--yellow); background: #1a1500; }
+
+  /* KEYBOARD VISUAL */
+  .keyboard-visual { background: #0a0a18; border: 2px solid var(--border); padding: 20px; margin-bottom: 20px; text-align: center; }
+  .kb-row { display: flex; justify-content: center; gap: 4px; margin-bottom: 4px; }
+  .kb-key { display: inline-flex; align-items: center; justify-content: center; min-width: 34px; height: 34px; padding: 0 8px; background: #111128; border: 2px solid #333355; border-bottom: 4px solid #1a1a40; font-family: var(--pixel); font-size: 6px; color: #555577; cursor: default; }
+  .kb-key.p1 { background: rgba(68,136,255,0.2); border-color: var(--blue); color: var(--blue); border-bottom-color: #002266; }
+  .kb-key.p2 { background: rgba(255,51,51,0.2); border-color: var(--red); color: var(--red); border-bottom-color: #660000; }
+  .kb-key.wide { min-width: 56px; }
+  .kb-key.xwide { min-width: 90px; }
+  .kb-key.space { min-width: 200px; }
+  .kb-legend { display: flex; justify-content: center; gap: 20px; margin-top: 14px; flex-wrap: wrap; }
+  .kb-leg-item { display: flex; align-items: center; gap: 6px; font-size: 7px; }
+  .kb-dot { width: 10px; height: 10px; border: 2px solid; }
+  .kb-dot.p1 { border-color: var(--blue); background: rgba(68,136,255,0.3); }
+  .kb-dot.p2 { border-color: var(--red); background: rgba(255,51,51,0.3); }
+
+  @media (max-width: 480px) { nav a { font-size: 6px; padding: 12px 8px; } .logo { font-size: 16px; } .keyboard-visual { display: none; } }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="header-stars"></div>
   <div class="header-inner">
@@ -387,23 +173,19 @@
   </div>
 </header>
 
-<!-- NAV -->
 <nav>
-  <a onclick="show('home')"      class="active" id="nav-home">ACCUEIL</a>
-  <a onclick="show('projet')"    id="nav-projet">PROJET</a>
-  <a onclick="show('equipe')"    id="nav-equipe">EQUIPE</a>
-  <a onclick="show('ressources')" id="nav-ressources">RESSOURCES</a>
+  <a onclick="show('home')"           class="active" id="nav-home">ACCUEIL</a>
+  <a onclick="show('projet')"         id="nav-projet">PROJET</a>
+  <a onclick="show('equipe')"         id="nav-equipe">EQUIPE</a>
+  <a onclick="show('commandes')"      id="nav-commandes">COMMANDES</a>
+  <a onclick="show('ressources')"     id="nav-ressources">RESSOURCES</a>
   <a onclick="show('telechargement')" id="nav-telechargement">TELECHARGEMENT</a>
 </nav>
 
-<!-- ════════════════════════════════════════
-     PAGE : ACCUEIL
-════════════════════════════════════════ -->
+<!-- ACCUEIL -->
 <div id="sec-home" class="section active">
   <div class="container">
-
     <div class="section-title">// BIENVENUE</div>
-
     <div class="card">
       <p class="hero-desc">
         <strong style="color:var(--yellow)">TRIVIA TAKEDOWN</strong> est un jeu de combat-quiz développé par l'équipe <strong style="color:var(--green)">Brain Strikers</strong>, 4 étudiants en 1ère année de classe préparatoire à l'EPITA. Combine réflexion et action : réponds correctement pour frapper plus fort !
@@ -411,75 +193,34 @@
       <div class="hero-btns">
         <a class="btn btn-yellow" onclick="show('projet')">▶ LE PROJET</a>
         <a class="btn btn-outline" onclick="show('equipe')">👾 L'EQUIPE</a>
+        <a class="btn btn-outline" onclick="show('commandes')">🎮 COMMANDES</a>
         <a class="btn btn-outline" onclick="show('telechargement')">⬇ TELECHARGER</a>
       </div>
     </div>
-
     <div class="feat-grid" style="margin-top:8px;">
-      <div class="feat">
-        <span class="feat-icon">⚔️</span>
-        <div class="feat-ttl">COMBAT EN TEMPS REEL</div>
-        <div class="feat-desc">Attaque, esquive et stratégie dans des duels dynamiques.</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">🧠</span>
-        <div class="feat-ttl">SYSTÈME DE QUESTIONS</div>
-        <div class="feat-desc">3 bonnes réponses d'affilée = attaque spéciale déclenchée.</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">🤖</span>
-        <div class="feat-ttl">IA ADAPTATIVE</div>
-        <div class="feat-desc">L'IA analyse ton style et ajuste la difficulté en temps réel.</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">🎮</span>
-        <div class="feat-ttl">MULTI-JOUEURS</div>
-        <div class="feat-desc">Solo ou affrontements 1v1 avec des personnages uniques.</div>
-      </div>
+      <div class="feat"><span class="feat-icon">⚔️</span><div class="feat-ttl">COMBAT EN TEMPS REEL</div><div class="feat-desc">Attaque, esquive et stratégie dans des duels dynamiques.</div></div>
+      <div class="feat"><span class="feat-icon">🧠</span><div class="feat-ttl">SYSTÈME DE QUESTIONS</div><div class="feat-desc">3 bonnes réponses d'affilée = attaque spéciale déclenchée.</div></div>
+      <div class="feat"><span class="feat-icon">🎮</span><div class="feat-ttl">MULTI-JOUEURS</div><div class="feat-desc">Solo ou affrontements 1v1 avec des personnages uniques.</div></div>
     </div>
-
     <div class="card blue" style="margin-top:24px;">
       <div class="card-title blue">AVANCEMENT DU PROJET</div>
-      <div class="prog-item">
-        <div class="prog-label"><span>GAMEPLAY / COMBAT</span><span style="color:var(--green)">90%</span></div>
-        <div class="prog-track"><div class="prog-fill" style="width:90%"></div></div>
-      </div>
-      <div class="prog-item">
-        <div class="prog-label"><span>SYSTÈME DE QUESTIONS</span><span style="color:var(--green)">100%</span></div>
-        <div class="prog-track"><div class="prog-fill" style="width:100%"></div></div>
-      </div>
-      <div class="prog-item">
-        <div class="prog-label"><span>INTELLIGENCE ARTIFICIELLE</span><span style="color:var(--yellow)">65%</span></div>
-        <div class="prog-track"><div class="prog-fill y" style="width:65%"></div></div>
-      </div>
-      <div class="prog-item">
-        <div class="prog-label"><span>MUSIQUE &amp; EFFETS SONORES</span><span style="color:var(--yellow)">50%</span></div>
-        <div class="prog-track"><div class="prog-fill y" style="width:50%"></div></div>
-      </div>
-      <div class="prog-item">
-        <div class="prog-label"><span>MODE MULTIJOUEUR EN LIGNE</span><span style="color:var(--red)">20%</span></div>
-        <div class="prog-track"><div class="prog-fill r" style="width:20%"></div></div>
-      </div>
+      <div class="prog-item"><div class="prog-label"><span>GAMEPLAY / COMBAT</span><span style="color:var(--green)">100%</span></div><div class="prog-track"><div class="prog-fill" style="width:100%"></div></div></div>
+      <div class="prog-item"><div class="prog-label"><span>SYSTÈME DE QUESTIONS</span><span style="color:var(--green)">100%</span></div><div class="prog-track"><div class="prog-fill" style="width:100%"></div></div></div>
+      <div class="prog-item"><div class="prog-label"><span>INTELLIGENCE ARTIFICIELLE</span><span style="color:var(--green)">100%</span></div><div class="prog-track"><div class="prog-fill" style="width:100%"></div></div></div>
+      <div class="prog-item"><div class="prog-label"><span>MUSIQUE &amp; EFFETS SONORES</span><span style="color:var(--green)">100%</span></div><div class="prog-track"><div class="prog-fill" style="width:100%"></div></div></div>
+      <div class="prog-item"><div class="prog-label"><span>MODE MULTIJOUEUR EN LIGNE</span><span style="color:var(--green)">100%</span></div><div class="prog-track"><div class="prog-fill" style="width:100%"></div></div></div>
     </div>
-
   </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     PAGE : PROJET
-════════════════════════════════════════ -->
+<!-- PROJET -->
 <div id="sec-projet" class="section">
   <div class="container">
-
     <div class="section-title">// PRESENTATION DU PROJET</div>
-
     <div class="card">
       <div class="card-title" style="color:var(--yellow)">CONCEPT GENERAL</div>
-      <p class="vt">
-        TRIVIA TAKEDOWN est un jeu de combat interactif où des personnages aux capacités uniques s'affrontent, mais la victoire ne dépend pas uniquement de la maîtrise des commandes. À intervalles réguliers, des questions sont posées aux joueurs — maths, logique, culture générale, informatique. Chaque bonne réponse confère un avantage direct sur le combat.
-      </p>
+      <p class="vt">TRIVIA TAKEDOWN est un jeu de combat interactif où des personnages aux capacités uniques s'affrontent, mais la victoire ne dépend pas uniquement de la maîtrise des commandes. À intervalles réguliers, des questions sont posées aux joueurs — maths, logique, culture générale, informatique. Chaque bonne réponse confère un avantage direct sur le combat.</p>
     </div>
-
     <div class="two-col">
       <div class="card green">
         <div class="card-title green">PHASE DE COMBAT</div>
@@ -496,292 +237,229 @@
         <ul class="pixel-list">
           <li>QCM ou réponse courte</li>
           <li>Maths, logique, culture générale</li>
-          <li>2 bonnes réponses : bonus défense / HP</li>
           <li>3 bonnes réponses : attaque spéciale</li>
           <li>Mauvaise réponse : -5 HP (auto-dégât)</li>
         </ul>
       </div>
     </div>
-
-    <div class="card blue" style="margin-top:4px;">
-      <div class="card-title blue">INTELLIGENCE ARTIFICIELLE</div>
-      <p class="vt" style="margin-bottom:14px;">
-        L'IA observe le comportement du joueur (agressif ou défensif), ses performances aux questions et son niveau global, puis adapte dynamiquement la difficulté des combats et des questions.
-      </p>
-      <div class="hp-wrap">
-        <div class="hp-label">JOUEUR 1 — HP</div>
-        <div class="hp-track"><div class="hp-fill hp-g" id="hp1" style="width:78%"></div></div>
-      </div>
-      <div class="hp-wrap">
-        <div class="hp-label">IA — HP</div>
-        <div class="hp-track"><div class="hp-fill hp-r" id="hp2" style="width:35%"></div></div>
-      </div>
-      <div class="hp-wrap">
-        <div class="hp-label">TIMER QUESTION</div>
-        <div class="hp-track"><div class="hp-fill hp-y" id="timer-bar" style="width:80%"></div></div>
-      </div>
-    </div>
-
     <div class="card purple">
       <div class="card-title purple">CHOIX TECHNIQUES</div>
       <div class="grid-2" style="gap:12px;">
-        <div>
-          <div class="hp-label" style="color:var(--yellow);margin-bottom:8px;">LANGAGE</div>
-          <p class="vt muted">Python — imposé par le cursus, flexible et adapté à l'IA adaptative et aux mécaniques de jeu.</p>
-        </div>
-        <div>
-          <div class="hp-label" style="color:var(--yellow);margin-bottom:8px;">ORGANISATION</div>
-          <p class="vt muted">Repository Git structuré : logique de jeu, assets, personnages, questions, IA — chaque module bien séparé.</p>
-        </div>
+        <div><div class="hp-label" style="color:var(--yellow);margin-bottom:8px;">LANGAGE</div><p class="vt muted">Python — imposé par le cursus, flexible et adapté aux mécaniques de jeu.</p></div>
+        <div><div class="hp-label" style="color:var(--yellow);margin-bottom:8px;">ORGANISATION</div><p class="vt muted">Repository Git structuré : logique de jeu, assets, personnages, questions, IA — chaque module bien séparé.</p></div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     PAGE : ÉQUIPE
-════════════════════════════════════════ -->
+<!-- EQUIPE -->
 <div id="sec-equipe" class="section">
   <div class="container">
-
     <div class="section-title">// L'EQUIPE — BRAIN STRIKERS</div>
-
     <div class="grid-4">
-
-      <div class="team-card">
-        <div class="avatar-wrap av-blue">VM</div>
-        <div class="t-name">VINCENT<br>MONGOBERT</div>
-        <div class="t-role">IA &amp; MUSIQUE</div>
-        <div class="t-school">EPITA — PROMO 203.</div>
-      </div>
-
-      <div class="team-card">
-        <div class="avatar-wrap av-red">GE</div>
-        <div class="t-name">GLORIA<br>ESSOMBA</div>
-        <div class="t-role">ÉCRAN &amp; UI</div>
-        <div class="t-school">EPITA — PROMO 2030</div>
-      </div>
-
-      <div class="team-card">
-        <div class="avatar-wrap av-green">HM</div>
-        <div class="t-name">HEDI<br>MZALIE</div>
-        <div class="t-role">GRAPHISMES</div>
-        <div class="t-school">EPITA — PROMO 2030</div>
-      </div>
-
-      <div class="team-card">
-        <div class="avatar-wrap av-purple">MG</div>
-        <div class="t-name">MARTHEN<br>GHOSON</div>
-        <div class="t-role">QUESTIONS</div>
-        <div class="t-school">EPITA — PROMO 2030</div>
-      </div>
-
+      <div class="team-card"><div class="avatar-wrap av-blue">VM</div><div class="t-name">VINCENT<br>MONGOBERT</div><div class="t-role">IA &amp; MUSIQUE</div><div class="t-school">EPITA — PROMO 2030</div></div>
+      <div class="team-card"><div class="avatar-wrap av-red">GE</div><div class="t-name">GLORIA<br>ESSOMBA</div><div class="t-role">ÉCRAN &amp; UI</div><div class="t-school">EPITA — PROMO 2030</div></div>
+      <div class="team-card"><div class="avatar-wrap av-green">HM</div><div class="t-name">HEDI<br>MZALIE</div><div class="t-role">GRAPHISMES</div><div class="t-school">EPITA — PROMO 2030</div></div>
+      <div class="team-card"><div class="avatar-wrap av-purple">MG</div><div class="t-name">MARTHEN<br>GHOSON</div><div class="t-role">QUESTIONS</div><div class="t-school">EPITA — PROMO 2030</div></div>
     </div>
-
     <div class="card" style="margin-top:28px;text-align:center;">
       <p class="vt" style="color:var(--muted);margin-bottom:6px;">PROJET RÉALISÉ À</p>
       <div style="font-size:clamp(14px,3vw,24px);color:var(--text);letter-spacing:4px;margin-bottom:4px;">EPITA</div>
       <p class="vt muted">École Pour l'Informatique et les Techniques Avancées</p>
       <p class="vt" style="color:#555577;margin-top:6px;font-size:14px;">1ère année de classe préparatoire — 2025/2026</p>
     </div>
-
   </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     PAGE : RESSOURCES
-════════════════════════════════════════ -->
+<!-- COMMANDES -->
+<div id="sec-commandes" class="section">
+  <div class="container">
+    <div class="section-title">// COMMANDES CLAVIER</div>
+
+    <!-- Aperçu clavier -->
+    <div class="keyboard-visual">
+      <div style="font-size:7px;color:var(--muted);margin-bottom:14px;letter-spacing:2px;">APERÇU DU CLAVIER — TOUCHES ACTIVES</div>
+      <!-- Rangée 1 -->
+      <div class="kb-row">
+        <div class="kb-key wide">ESC</div>
+        <div class="kb-key">1</div><div class="kb-key">2</div><div class="kb-key">3</div>
+        <div class="kb-key">4</div><div class="kb-key">5</div><div class="kb-key">6</div>
+        <div class="kb-key">7</div><div class="kb-key">8</div><div class="kb-key">9</div><div class="kb-key">0</div>
+      </div>
+      <!-- Rangée 2 : TAB Z Q E R T Y U I O P -->
+      <div class="kb-row">
+        <div class="kb-key wide">TAB</div>
+        <div class="kb-key p1">Z</div>
+        <div class="kb-key p1">Q</div>
+        <div class="kb-key">E</div><div class="kb-key">R</div>
+        <div class="kb-key">T</div><div class="kb-key">Y</div><div class="kb-key">U</div><div class="kb-key">I</div>
+        <div class="kb-key p2">O</div>
+        <div class="kb-key p2">P</div>
+      </div>
+      <!-- Rangée 3 : CAPS A S D F G H J K L M -->
+      <div class="kb-row">
+        <div class="kb-key xwide">CAPS</div>
+        <div class="kb-key p1">A</div>
+        <div class="kb-key p1">S</div>
+        <div class="kb-key">D</div><div class="kb-key">F</div>
+        <div class="kb-key">G</div><div class="kb-key">H</div><div class="kb-key">J</div><div class="kb-key">K</div>
+        <div class="kb-key p2">L</div>
+        <div class="kb-key p2">M</div>
+      </div>
+      <!-- Rangée 4 : SHIFT W X C V B N ? -->
+      <div class="kb-row">
+        <div class="kb-key xwide">SHIFT</div>
+        <div class="kb-key p1">W</div>
+        <div class="kb-key p1">X</div>
+        <div class="kb-key">C</div><div class="kb-key">V</div><div class="kb-key">B</div><div class="kb-key">N</div><div class="kb-key">?</div>
+      </div>
+      <!-- Rangée 5 : CTRL ESPACE ← → -->
+      <div class="kb-row">
+        <div class="kb-key xwide">CTRL</div>
+        <div class="kb-key space">ESPACE</div>
+        <div class="kb-key p2">←</div>
+        <div class="kb-key p2">→</div>
+      </div>
+      <div class="kb-legend">
+        <div class="kb-leg-item"><div class="kb-dot p1"></div><span style="color:var(--blue)">JOUEUR 1</span></div>
+        <div class="kb-leg-item"><div class="kb-dot p2"></div><span style="color:var(--red)">JOUEUR 2</span></div>
+      </div>
+    </div>
+
+    <!-- Fiches joueurs -->
+    <div class="cmd-players-grid">
+
+      <!-- JOUEUR 1 -->
+      <div class="cmd-player-card p1">
+        <div class="cmd-player-header">
+          <div class="cmd-player-icon">🟦</div>
+          <div>
+            <div class="cmd-player-title">JOUEUR 1</div>
+            <div class="cmd-player-sub">Côté gauche du clavier (AZERTY)</div>
+          </div>
+        </div>
+        <div class="cmd-list">
+          <div class="cmd-row"><div class="cmd-action">Aller à gauche</div><div class="cmd-keys"><span class="key blue">W</span></div></div>
+          <div class="cmd-row"><div class="cmd-action">Aller à droite</div><div class="cmd-keys"><span class="key blue">X</span></div></div>
+          <div class="cmd-row"><div class="cmd-action">Réponse haut gauche</div><div class="cmd-keys"><span class="key blue">Z</span></div></div>
+          <div class="cmd-row"><div class="cmd-action">Réponse haut droit</div><div class="cmd-keys"><span class="key blue">Q</span></div></div>
+          <div class="cmd-row"><div class="cmd-action">Réponse bas gauche</div><div class="cmd-keys"><span class="key blue">S</span></div></div>
+          <div class="cmd-row"><div class="cmd-action">Réponse bas droit</div><div class="cmd-keys"><span class="key blue">A</span></div></div>
+        </div>
+      </div>
+
+      <!-- JOUEUR 2 -->
+      <div class="cmd-player-card p2">
+        <div class="cmd-player-header">
+          <div class="cmd-player-icon">🟥</div>
+          <div>
+            <div class="cmd-player-title">JOUEUR 2</div>
+            <div class="cmd-player-sub">Flèches directionnelles + OPML</div>
+          </div>
+        </div>
+        <div class="cmd-list">
+          <div class="cmd-row"><div class="cmd-action">Aller à gauche</div><div class="cmd-keys"><span class="key red">←</span></div></div>
+          <div class="cmd-row"><div class="cmd-action">Aller à droite</div><div class="cmd-keys"><span class="key red">→</span></div></div>
+          <div class="cmd-row"><div class="cmd-action">Réponse haut gauche</div><div class="cmd-keys"><span class="key red">O</span></div></div>
+          <div class="cmd-row"><div class="cmd-action">Réponse haut droit</div><div class="cmd-keys"><span class="key red">P</span></div></div>
+          <div class="cmd-row"><div class="cmd-action">Réponse bas gauche</div><div class="cmd-keys"><span class="key red">L</span></div></div>
+          <div class="cmd-row"><div class="cmd-action">Réponse bas droit</div><div class="cmd-keys"><span class="key red">M</span></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- RESSOURCES -->
 <div id="sec-ressources" class="section">
   <div class="container">
-
     <div class="section-title">// RESSOURCES EXTERNES</div>
-
-    <!-- BIBLIOTHÈQUES -->
     <div class="card">
       <div class="card-title" style="color:var(--yellow)">BIBLIOTHÈQUES PYTHON</div>
       <table class="res-table">
-        <thead>
-          <tr>
-            <th>NOM</th>
-            <th>USAGE DANS LE PROJET</th>
-            <th>LIEN</th>
-          </tr>
-        </thead>
+        <thead><tr><th>NOM</th><th>USAGE DANS LE PROJET</th><th>LIEN</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong style="color:var(--yellow)">pygame</strong> <span class="tag tag-lib">LIB</span></td>
-            <td>Moteur de jeu : affichage, boucle de jeu, gestion des events, sprites, sons</td>
-            <td><a href="https://www.pygame.org/docs/" target="_blank">pygame.org/docs</a></td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--blue)">random</strong> <span class="tag tag-py">STD</span></td>
-            <td>Génération aléatoire des questions, comportements imprévisibles de l'IA</td>
-            <td><a href="https://docs.python.org/3/library/random.html" target="_blank">docs.python.org</a></td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--green)">math</strong> <span class="tag tag-py">STD</span></td>
-            <td>Calculs de distances entre personnages, détection de collisions, trajectoires</td>
-            <td><a href="https://docs.python.org/3/library/math.html" target="_blank">docs.python.org</a></td>
-          </tr>
+          <tr><td><strong style="color:var(--yellow)">pygame</strong> <span class="tag tag-lib">LIB</span></td><td>Moteur de jeu : affichage, boucle de jeu, gestion des events, sprites, sons</td><td><a href="https://www.pygame.org/docs/" target="_blank">pygame.org/docs</a></td></tr>
+          <tr><td><strong style="color:var(--blue)">random</strong> <span class="tag tag-py">STD</span></td><td>Génération aléatoire des questions, comportements imprévisibles de l'IA</td><td><a href="https://docs.python.org/3/library/random.html" target="_blank">docs.python.org</a></td></tr>
+          <tr><td><strong style="color:var(--green)">math</strong> <span class="tag tag-py">STD</span></td><td>Calculs de distances entre personnages, détection de collisions, trajectoires</td><td><a href="https://docs.python.org/3/library/math.html" target="_blank">docs.python.org</a></td></tr>
         </tbody>
       </table>
     </div>
-
-    <!-- ASSETS GRAPHIQUES -->
     <div class="card green">
       <div class="card-title green">ASSETS GRAPHIQUES &amp; VISUELS</div>
       <table class="res-table">
-        <thead>
-          <tr>
-            <th>RESSOURCE</th>
-            <th>DESCRIPTION</th>
-            <th>LIEN</th>
-          </tr>
-        </thead>
+        <thead><tr><th>RESSOURCE</th><th>DESCRIPTION</th><th>LIEN</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong style="color:var(--green)">Itch.io</strong> <span class="tag tag-img">IMG</span></td>
-            <td>Banque de sprites pixel art libres de droits pour personnages et décors</td>
-            <td><a href="https://itch.io/game-assets/free/tag-pixel-art" target="_blank">itch.io/game-assets</a></td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--green)">OpenGameArt</strong> <span class="tag tag-img">IMG</span></td>
-            <td>Tilesets, backgrounds d'arènes et effets visuels open source</td>
-            <td><a href="https://opengameart.org" target="_blank">opengameart.org</a></td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--yellow)">Piskel</strong> <span class="tag tag-img">OUTIL</span></td>
-            <td>Logiciel de création de sprites pixel art (personnages et animations)</td>
-            <td><a href="https://www.piskelapp.com/" target="_blank">piskelapp.com</a></td>
-          </tr>
+          <tr><td><strong style="color:var(--green)">Itch.io</strong> <span class="tag tag-img">IMG</span></td><td>Banque de sprites pixel art libres de droits pour personnages et décors</td><td><a href="https://itch.io/game-assets/free/tag-pixel-art" target="_blank">itch.io/game-assets</a></td></tr>
+          <tr><td><strong style="color:var(--green)">OpenGameArt</strong> <span class="tag tag-img">IMG</span></td><td>Tilesets, backgrounds d'arènes et effets visuels open source</td><td><a href="https://opengameart.org" target="_blank">opengameart.org</a></td></tr>
+          <tr><td><strong style="color:var(--yellow)">Piskel</strong> <span class="tag tag-img">OUTIL</span></td><td>Logiciel de création de sprites pixel art (personnages et animations)</td><td><a href="https://www.piskelapp.com/" target="_blank">piskelapp.com</a></td></tr>
         </tbody>
       </table>
     </div>
-
-    <!-- ASSETS SONORES -->
     <div class="card purple">
       <div class="card-title purple">RESSOURCES SONORES</div>
       <table class="res-table">
-        <thead>
-          <tr>
-            <th>RESSOURCE</th>
-            <th>DESCRIPTION</th>
-            <th>LIEN</th>
-          </tr>
-        </thead>
+        <thead><tr><th>RESSOURCE</th><th>DESCRIPTION</th><th>LIEN</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong style="color:var(--purple)">Freesound</strong> <span class="tag tag-snd">SON</span></td>
-            <td>Effets sonores libres (attaques, impacts, UI) pour les phases de combat</td>
-            <td><a href="https://freesound.org" target="_blank">freesound.org</a></td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--purple)">OpenGameArt — Audio</strong> <span class="tag tag-snd">SON</span></td>
-            <td>Musiques de fond pixel art / chiptune pour les arènes</td>
-            <td><a href="https://opengameart.org/content/music" target="_blank">opengameart.org/music</a></td>
-          </tr>
+          <tr><td><strong style="color:var(--purple)">OpenGameArt — Audio</strong> <span class="tag tag-snd">SON</span></td><td>Musiques de fond pixel art / chiptune pour les arènes</td><td><a href="https://opengameart.org/content/music" target="_blank">opengameart.org/music</a></td></tr>
         </tbody>
       </table>
     </div>
-
-    <!-- RÉFÉRENCES BIBLIOGRAPHIQUES -->
     <div class="card blue">
       <div class="card-title blue">RÉFÉRENCES BIBLIOGRAPHIQUES</div>
       <table class="res-table">
-        <thead>
-          <tr>
-            <th>SOURCE</th>
-            <th>DESCRIPTION</th>
-            <th>LIEN</th>
-          </tr>
-        </thead>
+        <thead><tr><th>SOURCE</th><th>DESCRIPTION</th><th>LIEN</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong style="color:var(--blue)">Documentation Python 3</strong></td>
-            <td>Référence officielle Python utilisée tout au long du développement</td>
-            <td><a href="https://docs.python.org/3/" target="_blank">docs.python.org/3</a></td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--blue)">Pygame Tutorial</strong></td>
-            <td>Tutoriels officiels Pygame pour la boucle de jeu et la gestion des sprites</td>
-            <td><a href="https://www.pygame.org/wiki/tutorials" target="_blank">pygame.org/wiki/tutorials</a></td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--blue)">Real Python — Game Dev</strong></td>
-            <td>Guides pratiques sur le développement de jeux en Python</td>
-            <td><a href="https://realpython.com/pygame-a-primer/" target="_blank">realpython.com</a></td>
-          </tr>
+          <tr><td><strong style="color:var(--blue)">Documentation Python 3</strong></td><td>Référence officielle Python utilisée tout au long du développement</td><td><a href="https://docs.python.org/3/" target="_blank">docs.python.org/3</a></td></tr>
+          <tr><td><strong style="color:var(--blue)">Pygame Tutorial</strong></td><td>Tutoriels officiels Pygame pour la boucle de jeu et la gestion des sprites</td><td><a href="https://www.pygame.org/wiki/tutorials" target="_blank">pygame.org/wiki/tutorials</a></td></tr>
+          <tr><td><strong style="color:var(--blue)">Real Python — Game Dev</strong></td><td>Guides pratiques sur le développement de jeux en Python</td><td><a href="https://realpython.com/pygame-a-primer/" target="_blank">realpython.com</a></td></tr>
         </tbody>
       </table>
     </div>
-
   </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     PAGE : TÉLÉCHARGEMENT
-════════════════════════════════════════ -->
+<!-- TELECHARGEMENT -->
 <div id="sec-telechargement" class="section">
   <div class="container">
-
     <div class="section-title">// TELECHARGEMENTS</div>
-
     <div class="card" style="text-align:center;padding:20px 24px 28px;">
       <p class="vt" style="color:var(--muted);">Accédez au rapport de soutenance et au code source du projet ci-dessous.</p>
     </div>
-
     <div class="dl-grid">
-
       <div class="dl-card">
         <span class="dl-icon">📄</span>
         <div class="dl-label">RAPPORT DE SOUTENANCE</div>
-        <div class="dl-desc">Document complet présentant le concept, les mécaniques, l'IA, les choix techniques et l'avancement du projet TRIVIA TAKEDOWN.</div>
-    <a href="https://docs.google.com/document/d/1Qq3iTFfb78zs191R9yENGHcDXjJxZMvqD3q3rxosnnw/edit?usp=sharing" target="_blank" class="btn btn-yellow">⬇ TELECHARGER LE RAPPORT</a>
+        <div class="dl-desc">Document complet présentant le concept, les mécaniques, les choix techniques et l'avancement du projet TRIVIA TAKEDOWN.</div>
+        <a href="https://docs.google.com/document/d/1Qq3iTFfb78zs191R9yENGHcDXjJxZMvqD3q3rxosnnw/edit?usp=sharing" target="_blank" class="btn btn-yellow">⬇ TELECHARGER LE RAPPORT</a>
       </div>
       <div class="dl-card">
         <span class="dl-icon">🎮</span>
         <div class="dl-label">CODE SOURCE DU JEU</div>
-        <div class="dl-desc">Archive complète du projet Python / Pygame : logique de jeu, personnages, système de questions, IA et assets graphiques.</div>
+        <div class="dl-desc">Archive complète du projet Python / Pygame : logique de jeu, personnages, système de questions et assets graphiques.</div>
         <a href="https://marth44.itch.io/trivia-takedown" target="_blank" class="btn btn-yellow">⬇ TELECHARGER LE JEU</a>
+      </div>
     </div>
     <div class="card blue" style="margin-top:28px;">
       <div class="card-title blue">INFORMATIONS</div>
       <table class="res-table">
         <tbody>
-          <tr>
-            <td style="color:var(--muted);width:40%">Equipe</td>
-            <td>Brain Strikers — EPITA 2025-2026</td>
-          </tr>
-          <tr>
-            <td style="color:var(--muted)">Langage</td>
-            <td>Python 3 + Pygame</td>
-          </tr>
-          <tr>
-            <td style="color:var(--muted)">Plateforme</td>
-            <td>Windows 11 </td>
-          </tr>
-          <tr>
-            <td style="color:var(--muted)">Licence</td>
-            <td>Projet académique EPITA — usage pédagogique</td>
-          </tr>
-          <tr>
-            <td style="color:var(--muted)">Version</td>
-            <td>Beta — Soutenance 2026</td>
-          </tr>
+          <tr><td style="color:var(--muted);width:40%">Equipe</td><td>Brain Strikers — EPITA 2025-2026</td></tr>
+          <tr><td style="color:var(--muted)">Langage</td><td>Python 3 + Pygame</td></tr>
+          <tr><td style="color:var(--muted)">Plateforme</td><td>Windows 11</td></tr>
+          <tr><td style="color:var(--muted)">Licence</td><td>Projet académique EPITA — usage pédagogique</td></tr>
+          <tr><td style="color:var(--muted)">Version</td><td>Beta — Soutenance 2026</td></tr>
         </tbody>
       </table>
     </div>
-
     <div class="card" style="margin-top:4px;text-align:center;">
       <p class="vt muted">Pour toute question sur le projet :</p>
       <div style="font-family:var(--vt);font-size:18px;color:var(--green);margin-top:8px;">triviatakedown@outlook.fr</div>
     </div>
-
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">TRIVIA TAKEDOWN</div>
   <div class="footer-sub">BRAIN STRIKERS — EPITA 2025</div>
@@ -796,15 +474,6 @@
     document.getElementById('nav-' + id).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  // Timer bar animation
-  let tw = 100;
-  setInterval(() => {
-    tw -= 0.8;
-    if (tw <= 0) tw = 100;
-    const b = document.getElementById('timer-bar');
-    if (b) b.style.width = tw + '%';
-}, 100);
 </script>
 </body>
 </html>
